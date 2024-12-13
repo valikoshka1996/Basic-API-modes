@@ -97,6 +97,9 @@
                     <li class="nav-item" id="dashboardMenu" style="display: none;">
                         <a class="nav-link" href="dashboard.html">Dashboard</a>
                     </li>
+                    <li class="nav-item" id="wishboardMenu" style="display: none;">
+                        <a class="nav-link" href="wish.php">Wishboard</a>
+                    </li>
                     <li class="nav-item" id="userEmailMenu" style="display: none;">
                         <span class="nav-link" id="userEmail"></span>
                     </li>
@@ -131,6 +134,7 @@
             document.getElementById('loginMenu').style.display = 'none';
             document.getElementById('registerMenu').style.display = 'none';
             document.getElementById('dashboardMenu').style.display = 'block';
+            document.getElementById('wishboardMenu').style.display = 'block';
             document.getElementById('userEmailMenu').style.display = 'block';
             document.getElementById('logoutMenu').style.display = 'block';
             document.getElementById('userEmail').innerText = sessionStorage.getItem('email');
