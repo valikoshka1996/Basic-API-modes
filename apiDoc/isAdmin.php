@@ -60,7 +60,7 @@
         <p>This API allows users to verify whether a specific user is an administrator by their ID.</p>
         
         <h2>Endpoint</h2>
-        <pre>GET /api/check_admin.php</pre>
+        <pre>GET /api/isAdmin.php</pre>
 
         <h2>Request Parameters</h2>
         <table>

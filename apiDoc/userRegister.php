@@ -71,7 +71,7 @@
     </header>
     <div class="container">
         <h2>Endpoint</h2>
-        <p><strong>POST</strong> <code>/user/register</code></p>
+        <p><strong>POST</strong> <code>/api/userRegister.php</code></p>
 
         <h2>Request</h2>
         <h3>Headers</h3>

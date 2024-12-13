@@ -57,7 +57,7 @@
 
     <h2>Endpoint: Delete Extra Records</h2>
     <div class="endpoint">
-        <strong>URL:</strong> <code>/delete_records.php</code><br>
+        <strong>URL:</strong> <code>/api/flushApiKeys.php</code><br>
         <strong>Method:</strong> DELETE
     </div>
 

@@ -65,7 +65,7 @@
     <div class="container">
         <h2>Endpoint Overview</h2>
         <div class="endpoint">
-            <strong>URL:</strong> <code>/api_endpoint.php</code><br>
+            <strong>URL:</strong> <code>/api/getMyWish.php</code><br>
             <strong>Method:</strong> <code>GET</code>
         </div>
 

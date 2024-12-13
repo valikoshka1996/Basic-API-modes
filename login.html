@@ -65,7 +65,10 @@
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const errorDiv = document.getElementById('error');
-
+        if (sessionStorage.getItem('login_key')) {
+        window.location.href = 'index.php';
+                return;
+        }
         errorDiv.textContent = "";
 
         fetch('/api/userLogin.php', {
@@ -84,7 +87,7 @@
             sessionStorage.setItem('email', data.email);
             sessionStorage.setItem('is_admin', data.is_admin);
             sessionStorage.setItem('login_key', data.login_key);
-            window.location.href = 'dashboard.html';
+            window.location.href = 'wish.php';
         })
         .catch(err => {
             errorDiv.textContent = err.message;

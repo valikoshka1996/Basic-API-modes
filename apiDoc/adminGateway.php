@@ -25,7 +25,7 @@
         <div class="card">
             <div class="card-header bg-primary text-white">Endpoint Information</div>
             <div class="card-body">
-                <p><strong>URL:</strong> <code>/your-endpoint</code></p>
+                <p><strong>URL:</strong> <code>/api/adminGateway.php</code></p>
                 <p><strong>Method:</strong> POST</p>
                 <p><strong>Content-Type:</strong> <code>application/json</code></p>
                 <p><strong>Request Body:</strong></p>

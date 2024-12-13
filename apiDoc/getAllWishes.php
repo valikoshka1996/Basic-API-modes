@@ -72,7 +72,7 @@
 
         <div class="endpoint">
             <h2>Endpoint</h2>
-            <p><strong>URL:</strong> <code>http://your-domain.com/api/endpoint.php</code></p>
+            <p><strong>URL:</strong> <code>/api/getAllWishes.php</code></p>
             <p><strong>Method:</strong> <code>GET</code></p>
         </div>
 

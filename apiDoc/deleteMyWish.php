@@ -72,7 +72,7 @@
             <p>This endpoint allows a user to delete a wish from the system.</p>
             <h3>Request</h3>
             <p><strong>Method:</strong> DELETE</p>
-            <p><strong>Endpoint:</strong> /api/wishes/delete</p>
+            <p><strong>Endpoint:</strong> /api/deleteMyWish.php</p>
 
             <h3>Parameters</h3>
             <table>

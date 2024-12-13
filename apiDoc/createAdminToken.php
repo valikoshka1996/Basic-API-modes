@@ -43,7 +43,7 @@
         <p>This endpoint allows administrators to generate an API key for accessing restricted services.</p>
 
         <h2>Endpoint</h2>
-        <p><strong>URL:</strong> <code>/adminApiKeyGenerator.php</code></p>
+        <p><strong>URL:</strong> <code>/api/createAdminToken.php</code></p>
         <p><strong>Method:</strong> <code>POST</code></p>
         <p><strong>Content-Type:</strong> <code>application/json</code></p>
 

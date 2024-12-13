@@ -73,7 +73,7 @@
     <p>This API allows users to log out by deleting their session identified by a <code>login_key</code>. The API accepts <strong>DELETE</strong> requests with JSON body data.</p>
 
     <h2>Endpoint</h2>
-    <p><code>DELETE /logout</code></p>
+    <p><code>DELETE /api/userLogout.php</code></p>
 
     <h2>Request Format</h2>
     <p>The API expects a JSON object with the following fields:</p>

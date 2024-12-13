@@ -95,10 +95,10 @@
                         <a class="nav-link" href="register.html">Register</a>
                     </li>
                     <li class="nav-item" id="dashboardMenu" style="display: none;">
-                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                        <a class="nav-link" href="createWish.php">Create Wish</a>
                     </li>
                     <li class="nav-item" id="wishboardMenu" style="display: none;">
-                        <a class="nav-link" href="wish.php">Wishboard</a>
+                        <a class="nav-link" href="manageWish.php">Wishboard</a>
                     </li>
                     <li class="nav-item" id="userEmailMenu" style="display: none;">
                         <span class="nav-link" id="userEmail"></span>
@@ -118,6 +118,8 @@
         <p>This site is dedicated to the legendary actor Billy Herrington for his outstanding achievements in acting.</p>
         <p>Just kidding! Actually, this is a simple implementation of a microservice API model website.</p>
         <p>Under the hood, this site hosts several API endpoints allowing interactions with this service, such as registration, login, and user authentication. Some methods require an API key, which can be obtained by contacting the site administrator!</p>
+        <p>I implemented a small website using a microservice architecture where you can create your own wish list. The number of wishes is unlimited; for now, you can create</p>
+        <p>and delete records, but nothing more. Everything was written manually without frameworks— I think it’s noticeable, as the styles look a bit different.</p>
         <p>API documentation is available at <a href="/apiDoc">this page</a>.</p>
     </div>
 

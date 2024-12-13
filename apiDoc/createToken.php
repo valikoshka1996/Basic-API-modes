@@ -31,7 +31,7 @@
         <p>This API allows administrators to generate API keys for users.</p>
 
         <h3>Endpoint</h3>
-        <p><code>POST /generateApiKey.php</code></p>
+        <p><code>POST /api/createToken.php</code></p>
 
         <h3>Request Format</h3>
         <p>The request must be sent in JSON format and contain the following fields:</p>

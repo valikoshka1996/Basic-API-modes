@@ -55,7 +55,7 @@
         <h1>Login API Documentation</h1>
 
         <h2>Endpoint</h2>
-        <p><code>POST /login.php</code></p>
+        <p><code>POST /api/userLogin.php</code></p>
 
         <h2>Description</h2>
         <p>This API endpoint handles user login, validates credentials, and generates a new authentication token for successful logins.</p>

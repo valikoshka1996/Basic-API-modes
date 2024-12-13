@@ -31,7 +31,7 @@
         <p>This API allows administrators to delete a user from the system.</p>
 
         <h3>Endpoint</h3>
-        <p><code>DELETE /deleteUser.php</code></p>
+        <p><code>DELETE /api/deleteUser.php</code></p>
 
         <h3>Request Format</h3>
         <p>The request must be sent in JSON format and contain the following fields:</p>

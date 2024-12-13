@@ -71,7 +71,7 @@
 
     <section class="section">
         <h2>Endpoint</h2>
-        <p><strong>POST /create-wish</strong></p>
+        <p><strong>POST /api/createWish.php</strong></p>
         <p>Send a POST request to this endpoint to create a new wish.</p>
     </section>
 
