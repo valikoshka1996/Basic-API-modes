@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .form-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .hint {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.2rem;
+        }
+        .error {
+            color: red;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .success {
+            color: green;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Register</h1>
+        <div id="message" class="error" style="display: none;"></div>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div class="hint">Must be at least 6 characters</div>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const messageDiv = document.getElementById('message');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const payload = { email, password };
+
+            try {
+                const response = await fetch('/api/userRegister.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (response.status === 400) {
+                    switch (result.error) {
+                        case "Both 'email' and 'password' fields are required":
+                            messageDiv.textContent = "Please enter both email and password.";
+                            break;
+                        case "This is not a mail":
+                            messageDiv.textContent = "Invalid email format.";
+                            break;
+                        case "At least 6 symbols required":
+                            messageDiv.textContent = "Password must be at least 6 characters long.";
+                            break;
+                        case "User already exists":
+                            messageDiv.textContent = "User already exists.";
+                            break;
+                        default:
+                            messageDiv.textContent = "An unknown error occurred.";
+                            break;
+                    }
+                    messageDiv.className = 'error';
+                    messageDiv.style.display = 'block';
+                } else if (response.status === 200 && result.message === 'success') {
+                    messageDiv.textContent = "Successfully registered! Redirecting to login...";
+                    messageDiv.className = 'success';
+                    messageDiv.style.display = 'block';
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    messageDiv.textContent = "An unknown error occurred.";
+                    messageDiv.className = 'error';
+                    messageDiv.style.display = 'block';
+                }
+            } catch (error) {
+                messageDiv.textContent = "Failed to connect to the server.";
+                messageDiv.className = 'error';
+                messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

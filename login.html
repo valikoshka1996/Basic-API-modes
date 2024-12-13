@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Login</h2>
+    <div class="error" id="error"></div>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button id="loginBtn">Login</button>
+</div>
+
+<script>
+    document.getElementById('loginBtn').addEventListener('click', () => {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorDiv = document.getElementById('error');
+
+        errorDiv.textContent = "";
+
+        fetch('/api/userLogin.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => {
+            if (response.status === 400) throw new Error("немає паролю чи мейлу");
+            if (response.status === 401) throw new Error("невірний пароль");
+            if (response.status === 404) throw new Error("Користувача не знайдено");
+            return response.json();
+        })
+        .then(data => {
+            sessionStorage.setItem('user_id', data.id);
+            sessionStorage.setItem('email', data.email);
+            sessionStorage.setItem('is_admin', data.is_admin);
+            sessionStorage.setItem('login_key', data.login_key);
+            window.location.href = 'dashboard.html';
+        })
+        .catch(err => {
+            errorDiv.textContent = err.message;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header span {
+            font-size: 1rem;
+        }
+        .admin {
+            color: red;
+            font-weight: bold;
+        }
+        button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #d32f2f;
+        }
+        .content {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <span id="userEmail"></span>
+    <div>
+        <span id="adminTag"></span>
+        <button id="logoutBtn">Logout</button>
+    </div>
+</header>
+<div class="content">
+    <h1>Welcome to your Dashboard</h1>
+</div>
+
+<script>
+    const email = sessionStorage.getItem('email');
+    const user_id = sessionStorage.getItem('user_id');
+    const login_key = sessionStorage.getItem('login_key');
+    const is_admin = sessionStorage.getItem('is_admin');
+
+    if (!email || !user_id || !login_key) {
+        window.location.href = 'index.html';
+    }
+
+    document.getElementById('userEmail').textContent = `Logged in as: ${email}`;
+    if (is_admin === '1') {
+        document.getElementById('adminTag').textContent = "Administrator";
+        document.getElementById('adminTag').classList.add('admin');
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        fetch('/api/userLogout.php', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id, login_key })
+        })
+        .then(response => {
+            if (response.status === 400) throw new Error("відсутній ключ сесії та user_id");
+            if (response.status === 403) throw new Error("Вас було розлогінено, відсутня сесія");
+            if (response.status === 404) throw new Error("Вас було розлогінено, невірний ідентифікатор сесії");
+            return response.json();
+        })
+        .then(data => {
+            if (data.message === "Success") {
+                alert("Сессію успішно завершено");
+            }
+            sessionStorage.clear();
+            window.location.href = 'index.php';
+        })
+        .catch(err => {
+            alert(err.message);
+            sessionStorage.clear();
+            window.location.href = 'index.php';
+        });
+    });
+</script>
+</body>
+</html>

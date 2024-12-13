@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Документація - Додавання довіреної IP-адреси</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            border: 1px solid #ccc;
+        }
+        .json {
+            color: #27ae60;
+        }
+        .error {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>API Документація</h1>
+
+    <h2>Ендпоінт: POST /api/addTrustedIp.php</h2>
+
+    <p><strong>Опис:</strong> Цей ендпоінт дозволяє додати нову IP-адресу до списку довірених адрес у базі даних <strong>ip_database</strong>.</p>
+
+    <h3>Формат запиту</h3>
+    <p><strong>Метод запиту:</strong> POST</p>
+    <p><strong>Тип вмісту:</strong> application/json</p>
+
+    <h3>Тіло запиту:</h3>
+    <pre class="code-block"><span class="json">{
+    "api_key": "your_api_key",
+    "ip": "192.168.1.1"
+}</span></pre>
+    <ul>
+        <li><strong>api_key (обов'язкове):</strong> API ключ, який вже був згенерований і збережений у базі даних <strong>api_keys</strong>.</li>
+        <li><strong>ip (обов'язкове):</strong> IP-адреса у форматі IPv4, яку потрібно додати до довірених.</li>
+    </ul>
+
+    <h3>Відповідь:</h3>
+    <p><strong>Тип вмісту:</strong> application/json</p>
+
+    <h4>Успішне виконання:</h4>
+    <pre class="code-block"><span class="json">{
+    "status": "success",
+    "message": "IP address has been added successfully."
+}</span></pre>
+
+    <h4>Помилка:</h4>
+    <pre class="code-block"><span class="error">{
+    "status": "error",
+    "message": "Invalid API key or IP address."
+}</span></pre>
+
+</body>
+</html>
