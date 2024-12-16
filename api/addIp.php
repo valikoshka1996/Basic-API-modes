@@ -42,6 +42,26 @@ if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
     exit;
 }
 
+// Перевірка API ключа на адміністративні права
+$adminCheckUrl = "http://localhost/api/isKeyAdmin.php?api_key=" . urlencode($apiKey);
+$adminResponse = @file_get_contents($adminCheckUrl);
+
+if ($adminResponse === FALSE) {
+    http_response_code(500); // Internal Server Error
+    $response['message'] = 'Failed to verify admin status.';
+    echo json_encode($response);
+    exit;
+}
+
+$adminData = json_decode($adminResponse, true);
+
+if (!isset($adminData['is_admin']) || $adminData['is_admin'] !== true) {
+    http_response_code(403); // Forbidden
+    $response['message'] = 'Access denied.';
+    echo json_encode($response);
+    exit;
+}
+
 try {
     // Підключення до бази даних api_keys
     $apiDb = new PDO("mysql:host=localhost;dbname=$apiDbName", $dbUser, $dbPassword);
@@ -80,5 +100,4 @@ try {
 
 // Вивід відповіді
 echo json_encode($response);
-
 ?>
