@@ -81,7 +81,7 @@
                 <!-- Jar -->
                 <div class="mb-3">
                     <label for="jar" class="form-label">Monobank Jar</label>
-                    <input type="url" class="form-control" id="jar" placeholder="send.monobank.ua/jar/...">
+                    <input type="text" class="form-control" id="jar" placeholder="send.monobank.ua/jar/...">
                     <div class="error-message" id="jar-error"></div>
                 </div>
                 <!-- Priority -->
