@@ -115,19 +115,43 @@
             renderPagination();
         }
 
-        async function fetchLinkPreview(link, previewElementId) {
-            try {
-                const response = await fetch(`https://api.linkpreview.net/?key=558ffa06c4a3d9c9ccba040c6c7bbea3&q=${link}`);
-                if (!response.ok) return;
-                const data = await response.json();
-                const preview = document.getElementById(previewElementId);
-                if (data.image) {
-                    preview.innerHTML = `<img src="${data.image}" alt="Link preview">`;
-                }
-            } catch (error) {
-                console.error('Error fetching link preview', error);
-            }
+async function fetchLinkPreview(link, previewElementId) {
+    try {
+        // Формуємо тіло POST-запиту
+        const requestBody = JSON.stringify({ url: link });
+
+        // Виконуємо POST-запит
+        const response = await fetch('https://platmalaba.pp.ua/parseEngine/getImage.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: requestBody,
+        });
+
+        // Перевіряємо статус відповіді
+        if (!response.ok) {
+            console.error('Failed to fetch image preview:', response.statusText);
+            return;
         }
+
+        // Отримуємо та парсимо JSON-відповідь
+        const data = await response.json();
+
+        // Знаходимо елемент для прев'ю
+        const preview = document.getElementById(previewElementId);
+
+        // Якщо у відповіді є поле image_url, додаємо зображення в елемент
+        if (data.image_url) {
+            preview.innerHTML = `<img src="${data.image_url}" alt="Link preview">`;
+        } else {
+            console.warn('No image found in the response');
+        }
+    } catch (error) {
+        console.error('Error fetching link preview', error);
+    }
+}
+
 
         async function deleteWish(wishId) {
             try {
