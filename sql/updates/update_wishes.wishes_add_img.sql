@@ -1,0 +1,2 @@
+ALTER TABLE wishes
+ADD COLUMN img TEXT NULL;

@@ -106,16 +106,32 @@
             <div class="response-example">
                 <pre>
 [  
-    {
-        "id": 1,
-        "wish": "I want a new car",
-        "user_id": 2
+        {
+        "id": 18,
+        "created_at": "2024-12-17 12:39:17",
+        "user_id": 26,
+        "name": "Kinets vikiv game",
+        "price": "3890.00",
+        "link": "https://geekach.com.ua/kinets-dvxdvikiv-aeons-end/",
+        "jar": "send.monobank.ua/jar/example",
+        "priority": "medium",
+        "visibility": 1,
+        "desc": "Board game",
+        "img": null
     },
-    {
-        "id": 2,
-        "wish": "Travel around the world",
-        "user_id": 5
-    }
+        {
+        "id": 19,
+        "created_at": "2024-12-17 12:39:17",
+        "user_id": 26,
+        "name": "vikiv game",
+        "price": "223.00",
+        "link": "https://geekach.com.ua/kinets-dvxdvikiv-aeons-end/",
+        "jar": "send.monobank.ua/jar/example",
+        "priority": "medium",
+        "visibility": 1,
+        "desc": "Board game",
+        "img": null
+    },
 ]</pre>
             </div>
 

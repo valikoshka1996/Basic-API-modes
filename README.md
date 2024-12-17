@@ -44,3 +44,4 @@ This project represents a simple model of a microservice architecture built on A
 - The API documentation is available in the `apiDoc` folder.
 - Ensure that the database credentials and admin API key are kept secure.
 - Follow the sequence of steps above for smooth initialization and usage.
+- At first - run all scripts in SQL folder, and nex - run all SQL scripts im update folder - This is extremely important for the correct functioning of API V1

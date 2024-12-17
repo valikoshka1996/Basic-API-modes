@@ -90,18 +90,32 @@
 
         <h3>Success Response (200 OK)</h3>
         <pre><code>[ 
-    {
-        "id": 1,
-        "user_id": 123,
-        "wish": "First wish",
-        "created_at": "2024-06-13"
+        {
+        "id": 18,
+        "created_at": "2024-12-17 12:39:17",
+        "user_id": 26,
+        "name": "Kinets vikiv game",
+        "price": "3890.00",
+        "link": "https://geekach.com.ua/kinets-dvxdvikiv-aeons-end/",
+        "jar": "send.monobank.ua/jar/example",
+        "priority": "medium",
+        "visibility": 1,
+        "desc": "Board game",
+        "img": null
+    },,
+        {
+        "id": 19,
+        "created_at": "2024-12-17 12:39:17",
+        "user_id": 26,
+        "name": "Kinets vikiv game",
+        "price": "3890.00",
+        "link": "https://geekach.com.ua/kinets-dvxdvikiv-aeons-end/",
+        "jar": "send.monobank.ua/jar/example",
+        "priority": "medium",
+        "visibility": 1,
+        "desc": "Board game",
+        "img": null
     },
-    {
-        "id": 2,
-        "user_id": 123,
-        "wish": "Second wish",
-        "created_at": "2024-06-14"
-    }
 ]</code></pre>
         <p>In case there are no wishes:</p>
         <pre><code>[]</code></pre>
@@ -119,12 +133,19 @@
         <pre><code>GET /api_endpoint.php?login_key=example_session_key</code></pre>
         <p><strong>Example Response:</strong></p>
         <pre><code>[ 
-    {
-        "id": 1,
-        "user_id": 123,
-        "wish": "My first wish",
-        "created_at": "2024-06-13"
-    }
+        {
+        "id": 18,
+        "created_at": "2024-12-17 12:39:17",
+        "user_id": 26,
+        "name": "Kinets vikiv game",
+        "price": "3890.00",
+        "link": "https://geekach.com.ua/kinets-dvxdvikiv-aeons-end/",
+        "jar": "send.monobank.ua/jar/example",
+        "priority": "medium",
+        "visibility": 1,
+        "desc": "Board game",
+        "img": null
+    },
 ]</code></pre>
     </div>
 
